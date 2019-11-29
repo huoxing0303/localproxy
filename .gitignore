@@ -1,0 +1,16 @@
+.DS_Store
+
+# Gradle
+.gradle
+build
+bin
+
+# Maven
+target
+
+# Editor directories and files
+.idea
+.vscode
+.project
+.classpath
+.settings

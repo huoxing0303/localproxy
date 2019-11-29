@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hx</groupId>
+	<artifactId>proxy</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0.0</version>
+
+	<properties>
+
+	</properties>
+
+	<dependencies>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-lib-src-webapps</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<copy todir="${project.build.directory}/dist">
+									<fileset dir="${project.build.directory}">
+										<include name="*.jar" />
+									</fileset>
+								</copy>
+								<copy todir="${project.build.directory}/dist/bin">
+									<fileset dir="src/main/resources">
+										<include name="**/*.bat" />
+										<include name="**/*.sh" />
+									</fileset>
+								</copy>
+								<copy todir="${project.build.directory}/dist/config">
+									<fileset dir="src/main/resources/config">
+										<include name="**/*.properties" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*.properties</exclude>
+						<exclude>**/*.bat</exclude>
+						<exclude>**/*.sh</exclude>
+						<exclude>config</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
