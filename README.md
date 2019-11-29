@@ -19,3 +19,6 @@ remote.helpdesk.port 默认可以不改， 要和local.properties中的remote.he
 1.在公网服务器运行 bin/remote.sh
 2.在局域网机器运行 local.bat
 例如，代码本地tomcat发布web服务，这样访问 http://47.100.220.181:9527/xxx
+
+# 流程图
+![image](https://github.com/huoxing0303/localproxy/blob/master/src/main/resources/process.jpg)
